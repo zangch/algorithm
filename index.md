@@ -22,12 +22,14 @@
   新建 Dockerfile 文本文件
 ```
 FROM [imageName]:[version] 继承官方的image
-COPY . /app 将当前目录的所有文件（除了 .dockerignore ) ,都拷贝到 image 文件的 /app 目录
+MAINTAINER [name] 维护者信息
+ADD/CPPY [localDir] [containerDir] 将当前目录的所有文件（除了 .dockerignore ) ,都拷贝到 image 文件的 /app 目录，ADD 会自动解压和可以访问网络资源
 WORDIR /app 指定工作目录
-RUN npm insatll
+VOLUME [localDir] 指定持久化目录
 EXPOSE [port] 暴露容器端口
-CMD RUN命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件；CMD命令则是在容器启动后执行。另外，一个 Dockerfile 可以包含多个RUN命令，但是只能有一个CMD命令。
-注意，指定了CMD命令以后，docker container run命令就不能附加命令了，否则它会覆盖CMD命令。
+RUN [command]
+CMD [command] RUN命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件；CMD命令则是在容器启动后执行。另外一个 Dockerfile 可以包含多个RUN命令，但是只能有一个CMD命令。注意，指定了CMD命令以后，docker container run命令就不能附加命令了，否则它会覆盖CMD命令。
+ENTRYPOINT [command] 
 ```
 ### Docker 指令
 `docker version`  查看版本
@@ -37,7 +39,7 @@ CMD RUN命令在 image 文件的构建阶段执行，执行结果都会打包进
 `docker image rm [imageNmae]` 删除 image
 `docker container ls` 正在运行 container 列表，`--all` container列表
 `docker container run [imageName]` 从 image 生成容器实例,该指令会遍历本地 image，若没有会自动 pull
-`docker container run --rm -p [localPort]:[containerPort] -it [imageName]:[version] [shell]` -it 容器的 shell 映射到当前, shell: /bin/bash, --rm: 运行后自动删除
+`docker container run --rm -p [localPort]:[containerPort] -it [imageName]:[version] [command]` -it 容器的 shell 映射到当前, shell: /bin/bash, --rm: 运行后自动删除
 `docker container start [containerID]` 启动已生成容器
 `docker container stop [containerID]` 终止容器进程 SIGTERM 信号会进行收尾清理工作
 `docker container kill [containerID]` 终止容器进程 SIGKILL 信号会立即终止
