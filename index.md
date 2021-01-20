@@ -22,6 +22,7 @@
 ```
 　FROM [imageName]:[version] 继承官方的image
 　MAINTAINER [name] 维护者信息
+　
 　ADD/CPPY [localDir] [containerDir] 将当前目录的所有文件（除了 .dockerignore ) ,都拷贝到 image 文件的 /app 目录，ADD 会自动解压和可以访问网络资源
 　WORDIR /app 指定工作目录
 　VOLUME [localDir] 指定持久化目录
@@ -49,4 +50,5 @@
 　`docker container logs [containerID]` 查看容器的输出  
 　`docker container exec -it [containerID] /bin/bash` 进入正在运行的容器进程  
 　`docker container cp [containID]:[/path/to/file]` 拷贝文件  
+　`docker commit -a [myName] [containerID] [imageName]:[version]` 提交容器信息打包成镜像
 ```
