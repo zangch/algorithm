@@ -12,6 +12,7 @@
 
 ### Dockerfile 文件
 　Docker 根据 Dockerfile 文件生成二进制的 image 文件。  
+ 
 　　1. 编写 Dockerignore 文件    
 ```  
 　　写入要忽略的文件  
