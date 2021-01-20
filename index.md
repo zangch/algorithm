@@ -13,22 +13,22 @@
 ### Dockerfile 文件
 　Docker 根据 Dockerfile 文件生成二进制的 image 文件。  
  
-　　1. 编写 Dockerignore 文件    
+　1. 编写 Dockerignore 文件    
 ```  
-　　写入要忽略的文件  
-　　若没有要忽略的文件可以不创建  
+　写入要忽略的文件  
+　若没有要忽略的文件可以不创建  
 ```
-　　2. 编写 Dockerfile文件  
+　2. 编写 Dockerfile文件  
 ```
-　　FROM [imageName]:[version] 继承官方的image
-　　MAINTAINER [name] 维护者信息
-　　ADD/CPPY [localDir] [containerDir] 将当前目录的所有文件（除了 .dockerignore ) ,都拷贝到 image 文件的 /app 目录，ADD 会自动解压和可以访问网络资源
-　　WORDIR /app 指定工作目录
-　　VOLUME [localDir] 指定持久化目录
-　　EXPOSE [port] 暴露容器端口
-　　RUN [command]
-　　CMD [command] RUN命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件；CMD命令则是在容器启动后执行。另外一个 Dockerfile 可以包含多个RUN命令，但是只能有一个CMD命令。注意，指定了CMD命令以后，docker container run命令就不能附加命令了，否则它会覆盖CMD命令。
-　　ENTRYPOINT [command] 
+　FROM [imageName]:[version] 继承官方的image
+　MAINTAINER [name] 维护者信息
+　ADD/CPPY [localDir] [containerDir] 将当前目录的所有文件（除了 .dockerignore ) ,都拷贝到 image 文件的 /app 目录，ADD 会自动解压和可以访问网络资源
+　WORDIR /app 指定工作目录
+　VOLUME [localDir] 指定持久化目录
+　EXPOSE [port] 暴露容器端口
+　RUN [command]
+　CMD [command] RUN命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件；CMD命令则是在容器启动后执行。另外一个 Dockerfile 可以包含多个RUN命令，但是只能有一个CMD命令。注意，指定了CMD命令以后，docker container run命令就不能附加命令了，否则它会覆盖CMD命令。
+　ENTRYPOINT [command] 
 ```  
 
 ### Docker 指令  
