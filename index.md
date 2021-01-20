@@ -12,14 +12,12 @@
 
 ### Dockerfile 文件
  Docker 根据 Dockerfile 文件生成二进制的 image 文件。  
- 1. 编写 Dockerignore 文件  
-  新建 .dockerignore 文本文件  
+ 1. 编写 Dockerignore 文件    
   ```  
   写入要忽略的文件  
   若没有要忽略的文件可以不创建  
   ```
  2. 编写 Dockerfile文件  
-  新建 Dockerfile 文本文件  
   ```
   FROM [imageName]:[version] 继承官方的image
   MAINTAINER [name] 维护者信息
@@ -32,6 +30,7 @@
   ENTRYPOINT [command] 
   ```  
 ### Docker 指令  
+```
  `docker version`  查看版本  
  `systemctl status docker` docker 服务  
  `docker image ls` image 列表  
@@ -48,3 +47,4 @@
  `docker container logs [containerID]` 查看容器的输出  
  `docker container exec -it [containerID] /bin/bash` 进入正在运行的容器进程  
  `docker container cp [containID]:[/path/to/file]` 拷贝文件  
+```
