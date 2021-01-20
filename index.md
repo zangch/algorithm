@@ -29,6 +29,7 @@
   CMD [command] RUN命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件；CMD命令则是在容器启动后执行。另外一个 Dockerfile 可以包含多个RUN命令，但是只能有一个CMD命令。注意，指定了CMD命令以后，docker container run命令就不能附加命令了，否则它会覆盖CMD命令。
   ENTRYPOINT [command] 
   ```  
+
 ### Docker 指令  
 ```
  `docker version`  查看版本  
