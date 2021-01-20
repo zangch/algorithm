@@ -32,19 +32,21 @@ CMD [command] RUN命令在 image 文件的构建阶段执行，执行结果都�
 ENTRYPOINT [command] 
 ```
 ### Docker 指令
-`docker version`  查看版本
-`systemctl status docker` docker 服务
-`docker image ls` image 列表
-`docker image pull [imageName]` 拉取仓库中 image 到本地
-`docker image rm [imageNmae]` 删除 image
-`docker container ls` 正在运行 container 列表，`--all` container列表
-`docker container run [imageName]` 从 image 生成容器实例,该指令会遍历本地 image，若没有会自动 pull
-`docker container run --rm -p [localPort]:[containerPort] -it [imageName]:[version] [command]` -it 容器的 shell 映射到当前, shell: /bin/bash, --rm: 运行后自动删除
-`docker container start [containerID]` 启动已生成容器
-`docker container stop [containerID]` 终止容器进程 SIGTERM 信号会进行收尾清理工作
-`docker container kill [containerID]` 终止容器进程 SIGKILL 信号会立即终止
-`docker container rm [containerID]` 删除容器文件
-`docker image build -t [imageName]:[version] [dir]` 创建 image 文件，version 默认为 latest ，路径可以用 . 表示当前路径
-`docker container logs [containerID]` 查看容器的输出
-`docker container exec -it [containerID] /bin/bash` 进入正在运行的容器进程
-`docker container cp [containID]:[/path/to/file]` 拷贝文件
+```Bash
+`docker version`  查看版本  
+`systemctl status docker` docker 服务  
+`docker image ls` image 列表  
+`docker image pull [imageName]` 拉取仓库中 image 到本地  
+`docker image rm [imageNmae]` 删除 image  
+`docker container ls` 正在运行 container 列表，`--all` container列表  
+`docker container run [imageName]` 从 image 生成容器实例,该指令会遍历本地 image，若没有会自动 pull  
+`docker container run --rm -p [localPort]:[containerPort] -it [imageName]:[version] [command]` -it 容器的 shell 映射到当前, shell: /bin/bash, --rm: 运行后自动删除  
+`docker container start [containerID]` 启动已生成容器  
+`docker container stop [containerID]` 终止容器进程 SIGTERM 信号会进行收尾清理工作  
+`docker container kill [containerID]` 终止容器进程 SIGKILL 信号会立即终止  
+`docker container rm [containerID]` 删除容器文件  
+`docker image build -t [imageName]:[version] [dir]` 创建 image 文件，version 默认为 latest ，路径可以用 . 表示当前路径  
+`docker container logs [containerID]` 查看容器的输出  
+`docker container exec -it [containerID] /bin/bash` 进入正在运行的容器进程  
+`docker container cp [containID]:[/path/to/file]` 拷贝文件  
+```
